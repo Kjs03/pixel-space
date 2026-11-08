@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" translate="no">
+  <head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#080b18">
+    <meta name="description" content="A flat image becomes a drifting field of pixels. Explore color, motion, and depth in PIXEL SPACE.">
+    <title>PIXEL SPACE — An image, reimagined.</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23b7c4ef' d='M6 6h9v9H6zm11 0h9v9h-9zM6 17h9v9H6z'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="style.css?v=photo-only1">
+    <script src="assets/examples/catalog.js" defer></script>
+    <script src="renderer.js" defer></script>
+    <script src="cosmos.js" defer></script>
+    <script src="image-space.js" defer></script>
+    <script src="sound.js" defer></script>
+    <script src="hand-control.js?v=handstudio4" defer></script>
+    <script src="hand-debug-view.js?v=handstudio4" defer></script>
+    <script src="script.js?v=photo-only1" defer></script>
+    <script src="tests/browser-check.js" defer></script>
+  </head>
+  <body>
+    <canvas id="cosmos" aria-hidden="true"></canvas>
+    <canvas id="stars" aria-hidden="true"></canvas>
+    <canvas id="image-atmosphere" aria-hidden="true"></canvas>
+    <div class="haze" aria-hidden="true"></div>
+    <div
+      id="stage"
+      role="img"
+      aria-hidden="true"
+      aria-label="Interactive pixel image. Drag to rotate, scroll to zoom, double click to reset."
+    ></div>
+    <main>
+      <section id="landing" aria-labelledby="title">
+        <div class="intro">
+          <h1 id="title">PIXEL SPACE</h1>
+          <div class="landing-actions">
+            <button id="try-demo" class="primary-button" type="button">TRY DEMO</button>
+            <button id="upload" class="secondary-button" type="button">USE YOUR IMAGE</button>
+          </div>
+        </div>
+      </section>
+      <section id="viewer" aria-label="Pixel field controls" inert aria-hidden="true">
+        <div class="controls">
+          <div class="panel-heading">
+            <span class="interaction-hint">Drag to orbit · Scroll to zoom</span>
+            <button id="sound" type="button" aria-pressed="false">SOUND OFF</button>
+          </div>
+          <div class="hand-controls">
+            <button id="hand-control" type="button" aria-pressed="false" aria-describedby="hand-status" title="Swipe to rotate · Pinch for precision · Two hands to zoom · Point to play">HAND CONTROL <span id="hand-state">OFF</span></button>
+            <span id="hand-status" role="status" aria-live="polite"></span>
+          </div>
+          <label for="depth">DEPTH <output id="depth-value" for="depth">55</output></label>
+          <input id="depth" type="range" min="0" max="100" value="55">
+          <label for="density">DENSITY <output id="density-value" for="density">240</output></label>
+          <input id="density" type="range" min="96" max="360" step="12" value="240">
+          <div class="control-actions">
+            <button id="reset" type="button">RESET</button>
+            <button id="upload-new" type="button">NEW IMAGE <span aria-hidden="true">↗</span></button>
+          </div>
+          <button id="back" class="back-button" type="button">← HOME</button>
+        </div>
+      </section>
+    </main>
+    <canvas id="transition-image" aria-hidden="true"></canvas>
+    <input
+      id="file-input"
+      class="visually-hidden"
+      tabindex="-1"
+      type="file"
+      accept="image/png,image/jpeg,image/webp"
+      aria-label="Choose an image"
+    >
+    <div id="drop-overlay" aria-hidden="true">
+      <span>Drop your image</span>
+      <p>PNG, JPG, or WebP</p>
+    </div>
+    <p id="status" role="status" aria-live="polite"></p>
+    <noscript><p class="no-script">Enable JavaScript to explore PIXEL SPACE.</p></noscript>
+  </body>
+</html>
